@@ -54,7 +54,7 @@ MoKa Reads Publication Specification:
 3. Acknowledgements
 4. Preface
 5. Table of Contents
-6. Chapter
+6. Chapter 
   - Use level 1 heading under centered alignment
   - Contain a summary of the chapter
   - After the summary use `minitoc`

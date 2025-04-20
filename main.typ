@@ -1,0 +1,76 @@
+#import "lib.typ": *
+
+// Still working on a default page for this
+#let license = [
+  #heading("License", outlined: false)
+  - The goal of this page is to discuss your licensing or copyright terms, as we usually reccamond publications to be under a creative commons license. Examples are CC BY-NC-SA 4.0 or CC BY-NC-ND 4.0.
+  - If you use any AI to help with your work, please add an AI disclosure
+
+  #align(left + bottom)[
+    #table(
+      stroke: none,
+      columns: 2,
+      [*Author:*], [Mustafif Khan],
+      [*Editor:*], [Mustafif Khan],
+      [*Publish Date:*], [A day some day],
+      [*Published by:*], [Mustafif Khan | MoKa Reads],
+      [*ISBN:*], [A number],
+    )
+  ]
+]
+
+// Still working on a default page for this
+#let preface = [
+  #heading("Preface", outlined: false)
+  *Chapter 1 Machiatto Template*: #lorem(40)
+]
+
+
+#show: doc.with(
+  author: "Mustafif",
+  title: "Machiatto Template",
+  paper-size: "a4",
+  ack: [
+    This will contain all of those who you would like to thank
+  ],
+  license: license,
+  preface: preface,
+  toc: true,
+  bibliography: none,
+)
+
+= Machiatto Template
+
+*This is a summary of what will be covered in the summary*:
+#lorem(100)
+#minitoc()
+
+== A section
+
+#lorem(100)
+
+#def(title: lorem(5), lorem(50))
+
+#lorem(50)
+
+#note(lorem(50))
+
+== Another section
+
+#lorem(20)
+
+#code_file(
+  "example/hello.c",
+  "C",
+  color.aqua,
+)
+
+#lorem(20)
+
+#terminal(title: "Terminal",
+  ```bash
+  $ clang hello.c
+  $ ./a.out
+  Hello, World!
+  ```
+)

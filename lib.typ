@@ -1,4 +1,4 @@
-#import "@preview/minitoc:0.1.0": minitoc
+#import "@preview/suboutline:0.3.0": *
 
 #let acknowledgement(fill: color.linear-rgb(245, 225, 164), content) = {
   align(center + horizon)[
@@ -14,6 +14,15 @@
     ]
   ]
 }
+
+#let minitoc(
+) = {
+v(5pt)
+suboutline(
+  indent: 0pt
+)
+}
+
 
 #let doc(
   title: "",
@@ -53,7 +62,7 @@
 
   acknowledgement(ack)
   pagebreak()
-  
+
   if(preface != none){
     preface
     pagebreak()
