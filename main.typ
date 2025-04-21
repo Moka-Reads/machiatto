@@ -1,6 +1,5 @@
 #import "lib.typ": *
 
-// Still working on a default page for this
 #let license = [
   #heading("License", outlined: false)
   - The goal of this page is to discuss your licensing or copyright terms, as we usually reccamond publications to be under a creative commons license. Examples are CC BY-NC-SA 4.0 or CC BY-NC-ND 4.0.
@@ -12,14 +11,13 @@
       columns: 2,
       [*Author:*], [Mustafif Khan],
       [*Editor:*], [Mustafif Khan],
-      [*Publish Date:*], [A day some day],
+      [*Publish Date:*], [#datetime.today().display()],
       [*Published by:*], [Mustafif Khan | MoKa Reads],
       [*ISBN:*], [A number],
     )
   ]
 ]
 
-// Still working on a default page for this
 #let preface = [
   #heading("Preface", outlined: false)
   *Chapter 1 Machiatto Template*: #lorem(40)
@@ -74,3 +72,7 @@
   Hello, World!
   ```
 )
+
+#info-box([
+  This is an informational note that highlights helpful content.
+])

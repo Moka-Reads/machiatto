@@ -245,13 +245,13 @@ suboutline(
   // Title for the terminal
   content,
   // The body content
-  fill: black,
+  fill: color.luma(15%),
   // Background color of the terminal
   text_color: white,
   // Text color for the terminal content
   title_color: luma(240),
   // Title bar text color
-  title_bg_color: black,
+  title_bg_color: color.black,
   // Title bar background color
   radius: 6pt,
   // Corner radius
@@ -280,4 +280,17 @@ suboutline(
       text(fill: text_color)[#content],
     )
   ]
+}
+
+#let info-box(body, title: "Info:") = {
+  rect(
+    stroke: (
+      "left": 1pt + color.maroon,
+    ),
+    fill: color.rgb("eeeeee"),
+    [
+      *#title*
+      #body
+    ]
+  )
 }
