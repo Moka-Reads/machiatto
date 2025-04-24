@@ -17,12 +17,11 @@
 
 #let minitoc(
 ) = {
-v(5pt)
-suboutline(
-  indent: 0pt
-)
+  v(5pt)
+  suboutline(
+    indent: 0pt,
+  )
 }
-
 
 #let doc(
   title: "",
@@ -63,7 +62,7 @@ suboutline(
   acknowledgement(ack)
   pagebreak()
 
-  if(preface != none){
+  if (preface != none) {
     preface
     pagebreak()
   }
@@ -74,16 +73,20 @@ suboutline(
   }
 
   // Main body.
+
   set page(paper: paper-size)
   set par(leading: 0.7em, spacing: 1.35em, justify: true, linebreaks: "optimized")
 
   // Configure page numbering and footer.
+
   set page(
     footer: context {
       // Get current page number.
+
       let i = counter(page).at(here()).first()
 
       // Align right for even pages and left for odd.
+
       let is-odd = calc.odd(i)
       let aln = if is-odd {
         right
@@ -92,12 +95,14 @@ suboutline(
       }
 
       // Are we on a page that starts a chapter?
+
       let target = heading.where(level: 1)
       if query(target).any(it => it.location().page() == i) {
         return align(aln)[#i]
       }
 
       // Find the chapter of the section we are currently in.
+
       let before = query(target.before(here()))
       if before.len() > 0 {
         let current = before.last()
@@ -115,6 +120,7 @@ suboutline(
   )
 
   // Configure equation numbering.
+
   set math.equation(numbering: "(1)")
 
   {
@@ -122,6 +128,7 @@ suboutline(
     set heading(numbering: "1.")
 
     // Start chapters on a new page.
+
     show heading.where(level: 1): it => {
       if chapter-pagebreak {
         pagebreak(weak: true)
@@ -135,12 +142,11 @@ suboutline(
     pagebreak()
     show std-bibliography: set text(0.85em)
     // Use default paragraph properties for bibliography.
+
     show std-bibliography: set par(leading: 0.65em, justify: false, linebreaks: auto)
     bibliography
   }
 }
-
-
 
 #let def(title: none, fill: color.rgb("E0F2F1"), body) = {
   block(
@@ -186,7 +192,7 @@ suboutline(
   )
 }
 
-#let frame(title: none, body, fill: none, line_numbers: true, line_number_color: gray) = {
+#let frame(title: none, body, fill: none, line-numbers: true, line-number-color: gray) = {
   let stroke = black + 1pt
   let radius = 5pt
 
@@ -206,7 +212,7 @@ suboutline(
       width: 100%,
       inset: (x: 0em, y: 0.5em),
       {
-        if line_numbers {
+        if line-numbers {
           // Split the body into lines
           let lines = body.text.split("\n")
           // Create a table with line numbers and code
@@ -217,7 +223,7 @@ suboutline(
             stroke: (y: 0.5pt + rgb(220, 220, 220)),
             ..lines.enumerate().map(((i, line)) => {
               (
-                align(right)[#text(fill: line_number_color)[#(i + 1)]],
+                align(right)[#text(fill: line-number-color)[#(i + 1)]],
                 align(left)[#raw(lang: body.lang, line)]
               )
             }).flatten(),
@@ -230,13 +236,13 @@ suboutline(
   ]
 }
 
-#let code_file(file_path, lang, fill, line_numbers: true, line_number_color: gray) = {
+#let code-file(file-path, lang, fill, line-numbers: true, line-number-color: gray) = {
   frame(
-    title: file_path,
+    title: file-path,
     fill: fill,
-    line_numbers: line_numbers,
-    line_number_color: line_number_color,
-    [#raw(read(file_path), lang: lang)],
+    line-numbers: line-numbers,
+    line-number-color: line-number-color,
+    [#raw(read(file-path), lang: lang)],
   )
 }
 
@@ -247,11 +253,11 @@ suboutline(
   // The body content
   fill: color.luma(15%),
   // Background color of the terminal
-  text_color: white,
+  text-color: white,
   // Text color for the terminal content
-  title_color: luma(240),
+  title-color: luma(240),
   // Title bar text color
-  title_bg_color: color.black,
+  title-bg-color: color.black,
   // Title bar background color
   radius: 6pt,
   // Corner radius
@@ -264,11 +270,11 @@ suboutline(
     // Title bar (if title is provided)
     #if title != none {
       box(
-        fill: title_bg_color,
+        fill: title-bg-color,
         inset: 0.5em,
         radius: (top-left: radius, top-right: radius),
         width: 100%,
-        align(center)[#text(fill: title_color)[*#title*]],
+        align(center)[#text(fill: title-color)[*#title*]],
       )
     }
     // Terminal content area
@@ -277,7 +283,7 @@ suboutline(
       inset: (x: 1em, y: 0.7em),
       radius: (bottom-left: radius, bottom-right: radius),
       width: 100%,
-      text(fill: text_color)[#content],
+      text(fill: text-color)[#content],
     )
   ]
 }
@@ -291,6 +297,6 @@ suboutline(
     [
       *#title*
       #body
-    ]
+    ],
   )
 }

@@ -55,9 +55,9 @@
 
 == Another section
 
-#lorem(20)
+#lorem(40)
 
-#code_file(
+#code-file(
   "example/hello.c",
   "C",
   color.aqua,
