@@ -8,8 +8,9 @@ description = "A package to help develop publications under MoKa Reads Specifica
 repository = "https://github.com/Moka-Reads/machiatto"
 exclude = ["example"]
 compiler = "0.13.1"
+categories = ["book"]
 
 [template]
 path = "."
 entrypoint = "main.typ"
-thumbnail = ""
+thumbnail = "Thumbnail.png"
