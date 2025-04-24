@@ -75,7 +75,7 @@
   // Main body.
 
   set page(paper: paper-size)
-  set par(leading: 0.7em, spacing: 1.35em, justify: true, linebreaks: "optimized")
+  set par(leading: 0.7em, spacing: 1.35em, justify: false, linebreaks: "simple")
 
   // Configure page numbering and footer.
 
@@ -236,6 +236,8 @@
   ]
 }
 
+
+
 #let code-file(file-path, lang, fill, line-numbers: true, line-number-color: gray) = {
   frame(
     title: file-path,
@@ -243,6 +245,29 @@
     line-numbers: line-numbers,
     line-number-color: line-number-color,
     [#raw(read(file-path), lang: lang)],
+  )
+}
+
+#let code-snippet(path,lang, fill, line-numbers: true, line-number-color: gray, from: 0, to: int) = {
+  // 1. Read the entire file as a string
+  let content = read(path)
+
+  // 2. Split on newlines → array of lines
+  let lines = content.split("\n")
+
+  // 3. Take only the lines in [from, to)
+  let selection = lines.slice(from, to)
+
+  // 4. Re-join into one multi-line string
+  let snippet = selection.join("\n")
+
+  // 5. Return as a raw block (verbatim)
+  frame(
+    title: path,
+    fill: fill,
+    line-numbers: line-numbers,
+    line-number-color: line-number-color,
+    [#raw(snippet, lang: lang)]
   )
 }
 

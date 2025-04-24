@@ -76,3 +76,10 @@
 #info-box([
   This is an informational note that highlights helpful content.
 ])
+This is useful for code snippets, allowing you to choose the line range to show from your source file.
+#code-snippet(
+  "example/hello.c",
+  "C",
+  color.aqua,
+  to: 3
+)
