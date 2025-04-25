@@ -9,11 +9,16 @@
     #table(
       stroke: none,
       columns: 2,
-      [*Author:*], [Mustafif Khan],
-      [*Editor:*], [Mustafif Khan],
-      [*Publish Date:*], [#datetime.today().display()],
-      [*Published by:*], [Mustafif Khan | MoKa Reads],
-      [*ISBN:*], [A number],
+      [*Author:*],
+      [Mustafif Khan],
+      [*Editor:*],
+      [Mustafif Khan],
+      [*Publish Date:*],
+      [#datetime.today().display()],
+      [*Published by:*],
+      [Mustafif Khan | MoKa Reads],
+      [*ISBN:*],
+      [A number],
     )
   ]
 ]
@@ -22,7 +27,6 @@
   #heading("Preface", outlined: false)
   *Chapter 1 Machiatto Template*: #lorem(40)
 ]
-
 
 #show: doc.with(
   author: "Mustafif",
@@ -65,12 +69,13 @@
 
 #lorem(20)
 
-#terminal(title: "Terminal",
+#terminal(
+  title: "Terminal",
   ```bash
   $ clang hello.c
   $ ./a.out
   Hello, World!
-  ```
+  ```,
 )
 
 #info-box([
@@ -79,7 +84,8 @@
 This is useful for code snippets, allowing you to choose the line range to show from your source file.
 #code-snippet(
   "example/hello.c",
+  subtitle: "snippet",
   "C",
   color.aqua,
-  to: 3
+  to: 3,
 )
