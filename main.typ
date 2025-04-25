@@ -1,4 +1,4 @@
-#import "lib.typ": *
+#import "@preview/machiatto:0.2.0": *
 
 #let license = [
   #heading("License", outlined: false)
